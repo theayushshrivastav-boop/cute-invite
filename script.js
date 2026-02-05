@@ -1,3 +1,7 @@
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const text = document.getElementById("text");
+
 let count = 0;
 
 const messages = [
@@ -7,16 +11,9 @@ const messages = [
   "At least smile first ☺️"
 ];
 
-const noBtn = document.getElementById("noBtn");
-const text = document.getElementById("text");
-
-noBtn.addEventListener("touchstart", moveButton);
-noBtn.addEventListener("mouseover", moveButton);
-
-function moveButton() {
-  const x = Math.random() * 120 - 60;
-  const y = Math.random() * 120 - 60;
-
+function moveNo() {
+  const x = Math.random() * 140 - 70;
+  const y = Math.random() * 140 - 70;
   noBtn.style.transform = `translate(${x}px, ${y}px)`;
 
   if (count < messages.length) {
@@ -27,12 +24,16 @@ function moveButton() {
   }
 }
 
-function yesClicked() {
+noBtn.addEventListener("touchstart", moveNo);
+noBtn.addEventListener("mouseover", moveNo);
+
+yesBtn.addEventListener("click", () => {
   document.body.innerHTML = `
     <div style="text-align:center">
       <h1 style="color:#ff4d88">
         That made my day 💖<br>
         See you on the 7th ✨
       </h1>
-    </div>`;
-}
+    </div>
+  `;
+});
